@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "713627b40773c366a3a8820204f0074c",
+    "content-hash": "a39b02b8043669d425692581dc2661c4",
     "packages": [
         {
             "name": "laminas/laminas-console",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alexcool94/laminas-console.git",
-                "reference": "3d3cfe447e9f968cc351bff0bd58376d9859e027"
+                "reference": "09ebaded1ad87b2be1384d6c5f6e77d359f1e23f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alexcool94/laminas-console/zipball/3d3cfe447e9f968cc351bff0bd58376d9859e027",
-                "reference": "3d3cfe447e9f968cc351bff0bd58376d9859e027",
+                "url": "https://api.github.com/repos/alexcool94/laminas-console/zipball/09ebaded1ad87b2be1384d6c5f6e77d359f1e23f",
+                "reference": "09ebaded1ad87b2be1384d6c5f6e77d359f1e23f",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-stdlib": "^3.2.1",
-                "laminas/laminas-zendframework-bridge": "^1.0",
+                "laminas/laminas-stdlib": "^3.3",
+                "laminas/laminas-zendframework-bridge": "^1.2",
                 "php": "^8.0"
             },
             "replace": {
@@ -30,10 +30,10 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-filter": "^2.7.2",
-                "laminas/laminas-json": "^3.0",
-                "laminas/laminas-validator": "^2.10.1",
-                "phpunit/phpunit": "^9.3"
+                "laminas/laminas-filter": "^2.11",
+                "laminas/laminas-json": "^3.2",
+                "laminas/laminas-validator": "^2.14",
+                "phpunit/phpunit": "^9.5"
             },
             "suggest": {
                 "laminas/laminas-filter": "To support DefaultRouteMatcher usage",
@@ -91,7 +91,7 @@
                 "chat": "https://laminas.dev/chat",
                 "forum": "https://discourse.laminas.dev"
             },
-            "time": "2021-04-02T12:10:25+00:00"
+            "time": "2021-04-02T13:41:09+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
