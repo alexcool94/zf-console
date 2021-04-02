@@ -11,11 +11,12 @@ use Countable;
 use DomainException;
 use InvalidArgumentException;
 use IteratorAggregate;
-use Zend\Console\RouteMatcher\RouteMatcherInterface;
-use Zend\Filter\Callback as CallbackFilter;
-use Zend\Filter\FilterInterface;
-use Zend\Validator\Callback as CallbackValidator;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Console\RouteMatcher\RouteMatcherInterface;
+use Laminas\Filter\Callback as CallbackFilter;
+use Laminas\Filter\FilterInterface;
+use Laminas\Validator\Callback as CallbackValidator;
+use Laminas\Validator\ValidatorInterface;
+use Traversable;
 
 class RouteCollection implements Countable, IteratorAggregate, RouteMatcherInterface
 {
@@ -37,7 +38,7 @@ class RouteCollection implements Countable, IteratorAggregate, RouteMatcherInter
     /**
      * Implement IteratorAggregate
      *
-     * @return SplStack
+     * @return Traversable
      */
     public function getIterator()
     {

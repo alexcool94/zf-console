@@ -71,7 +71,7 @@ class RouteTest extends TestCase
     {
         $route = new Route('foo', 'foo bar');
         $matches = $route->match(['foo', 'bar']);
-        $this->assertInternalType('array', $matches);
+        $this->assertIsArray($matches);
         $this->assertSame($matches, $route->getMatches());
     }
 

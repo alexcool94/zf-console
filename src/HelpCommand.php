@@ -6,7 +6,7 @@
 
 namespace ZF\Console;
 
-use Zend\Console\Adapter\AdapterInterface as Console;
+use Laminas\Console\Adapter\AdapterInterface as Console;
 
 class HelpCommand
 {

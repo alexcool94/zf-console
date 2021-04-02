@@ -6,7 +6,7 @@
 
 namespace ZF\Console;
 
-use Zend\Console\RouteMatcher\DefaultRouteMatcher;
+use Laminas\Console\RouteMatcher\DefaultRouteMatcher;
 
 class Route extends DefaultRouteMatcher
 {

@@ -6,7 +6,7 @@
 
 namespace ZF\Console\Filter;
 
-use Zend\Filter\FilterInterface;
+use Laminas\Filter\FilterInterface;
 
 class Explode implements FilterInterface
 {
@@ -49,7 +49,7 @@ class Explode implements FilterInterface
     }
 
     /**
-     * @see \Zend\Filter\FilterInterface::filter()
+     * @see FilterInterface::filter()
      * @param mixed $value
      * @return array|mixed $value Returns an array if a string $value was provided
      */

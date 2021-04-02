@@ -9,8 +9,8 @@ namespace ZF\Console;
 use Exception;
 use InvalidArgumentException;
 use Throwable;
-use Zend\Console\Adapter\AdapterInterface as Console;
-use Zend\Console\ColorInterface as Color;
+use Laminas\Console\Adapter\AdapterInterface as Console;
+use Laminas\Console\ColorInterface as Color;
 
 class ExceptionHandler
 {

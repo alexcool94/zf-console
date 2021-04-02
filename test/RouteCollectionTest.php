@@ -13,7 +13,7 @@ use ZF\Console\RouteCollection;
 
 class RouteCollectionTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->collection = new RouteCollection();
     }

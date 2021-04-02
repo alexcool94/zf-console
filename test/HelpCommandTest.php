@@ -6,15 +6,15 @@
 
 namespace ZFTest\Console;
 
+use Laminas\Console\Adapter\AdapterInterface;
 use PHPUnit\Framework\TestCase;
-use Zend\Console\Adapter\AdapterInterface;
 use ZF\Console\Application;
 use ZF\Console\HelpCommand;
 use ZF\Console\Route;
 
 class HelpCommandTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->application = $this->getMockBuilder(Application::class)
             ->disableOriginalConstructor()

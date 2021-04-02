@@ -6,8 +6,8 @@
 
 namespace ZF\Console\Filter;
 
-use Zend\Filter\FilterInterface;
-use Zend\Stdlib\ArrayUtils;
+use Laminas\Filter\FilterInterface;
+use Laminas\Stdlib\ArrayUtils;
 
 class QueryString implements FilterInterface
 {
@@ -24,7 +24,7 @@ class QueryString implements FilterInterface
     }
 
     /**
-     * @see \Zend\Filter\FilterInterface::filter()
+     * @see FilterInterface::filter()
      * @param mixed $value
      * @return mixed Original value, if not a string, or an array of key/value pairs
      */

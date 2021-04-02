@@ -6,12 +6,12 @@
 
 namespace ZF\Console\Filter;
 
-use Zend\Filter\FilterInterface;
+use Laminas\Filter\FilterInterface;
 
 class Json implements FilterInterface
 {
     /**
-     * @see \Zend\Filter\FilterInterface::filter()
+     * @see FilterInterface::filter()
      * @param mixed $value
      * @return mixed $value Returns the results of deserializing a JSON string;
      *     if incapable, returns the original value.

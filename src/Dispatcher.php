@@ -9,8 +9,8 @@ namespace ZF\Console;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
-use Zend\Console\Adapter\AdapterInterface as ConsoleAdapter;
-use Zend\Console\ColorInterface as Color;
+use Laminas\Console\Adapter\AdapterInterface as ConsoleAdapter;
+use Laminas\Console\ColorInterface as Color;
 
 class Dispatcher implements DispatcherInterface
 {

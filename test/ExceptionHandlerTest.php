@@ -8,9 +8,10 @@ namespace ZFTest\Console;
 
 use DomainException;
 use Exception;
+use Laminas\Console\Adapter\AdapterInterface;
+use ReflectionClass;
 use RuntimeException;
 use PHPUnit\Framework\TestCase;
-use Zend\Console\Adapter\AdapterInterface;
 use ZF\Console\ExceptionHandler;
 
 /**
@@ -18,22 +19,40 @@ use ZF\Console\ExceptionHandler;
  */
 class ExceptionHandlerTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->console = $this->getMockBuilder(AdapterInterface::class)->getMock();
         $this->handler = new ExceptionHandler($this->console);
     }
 
-    public function testMessageTemplateIsPopulatedByDefault()
+    /**
+     * @throws Exception
+     */
+    public function testMessageTemplateIsPopulatedByDefault(): void
     {
-        $this->assertAttributeContains(':className', 'messageTemplate', $this->handler);
-        $this->assertAttributeContains(':message', 'messageTemplate', $this->handler);
+        $reflectedClass = new ReflectionClass($this->handler);
+
+        $reflectedProperty = $reflectedClass->getProperty('messageTemplate');
+        $reflectedProperty->setAccessible(true);
+
+        $actualValue = $reflectedProperty->getValue($this->handler);
+
+        self::assertStringContainsString(':className', $actualValue);
+        self::assertStringContainsString(':message', $actualValue);
     }
 
-    public function testCanSetCustomMessageTemplate()
+    /**
+     * @throws Exception
+     */
+    public function testCanSetCustomMessageTemplate(): void
     {
         $this->handler->setMessageTemplate('testing');
-        $this->assertAttributeEquals('testing', 'messageTemplate', $this->handler);
+
+        $reflectedClass = new ReflectionClass($this->handler);
+        $reflectedProperty = $reflectedClass->getProperty('messageTemplate');
+        $reflectedProperty->setAccessible(true);
+
+        self::assertEquals('testing', $reflectedProperty->getValue($this->handler));
     }
 
     public function testCreateMessageFillsExpectedVariablesForExceptionWithoutPrevious()
@@ -44,13 +63,13 @@ class ExceptionHandlerTest extends TestCase
         );
         $exception = new Exception('testing', 127);
         $message = $this->handler->createMessage($exception);
-        $this->assertContains('ClassName: ' . get_class($exception), $message);
-        $this->assertContains('Message: ' . $exception->getMessage(), $message);
-        $this->assertContains('Code: ' . $exception->getCode(), $message);
-        $this->assertContains('File: ' . $exception->getFile(), $message);
-        $this->assertContains('Line: ' . $exception->getLine(), $message);
-        $this->assertContains('Stack: ' . $exception->getTraceAsString(), $message);
-        $this->assertNotContains('Previous: :previous', $message);
+        $this->assertStringContainsString('ClassName: ' . get_class($exception), $message);
+        $this->assertStringContainsString('Message: ' . $exception->getMessage(), $message);
+        $this->assertStringContainsString('Code: ' . $exception->getCode(), $message);
+        $this->assertStringContainsString('File: ' . $exception->getFile(), $message);
+        $this->assertStringContainsString('Line: ' . $exception->getLine(), $message);
+        $this->assertStringContainsString('Stack: ' . $exception->getTraceAsString(), $message);
+        $this->assertStringNotContainsString('Previous: :previous', $message);
     }
 
     public function testCreateMessageFillsExpectedVariablesForExceptionWithPrevious()
@@ -65,10 +84,10 @@ class ExceptionHandlerTest extends TestCase
         $message = $this->handler->createMessage($third);
 
         foreach ([$first, $second, $third] as $exception) {
-            $this->assertContains('ClassName: ' . get_class($exception), $message);
-            $this->assertContains('Message: ' . $exception->getMessage(), $message);
-            $this->assertContains('Code: ' . $exception->getCode(), $message);
+            $this->assertStringContainsString('ClassName: ' . get_class($exception), $message);
+            $this->assertStringContainsString('Message: ' . $exception->getMessage(), $message);
+            $this->assertStringContainsString('Code: ' . $exception->getCode(), $message);
         }
-        $this->assertNotContains('Previous: :previous', $message);
+        $this->assertStringNotContainsString('Previous: :previous', $message);
     }
 }

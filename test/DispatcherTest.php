@@ -6,9 +6,9 @@
 
 namespace ZFTest\Console;
 
+use Laminas\Console\Adapter\AdapterInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Zend\Console\Adapter\AdapterInterface;
 use ZF\Console\Dispatcher;
 use ZF\Console\Route;
 use ZFTest\Console\TestAsset\FooCommand;
@@ -20,7 +20,7 @@ class DispatcherTest extends TestCase
      */
     private $dispatcher;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->route = $this->getMockBuilder(Route::class)
             ->disableOriginalConstructor()
